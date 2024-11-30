@@ -1,0 +1,72 @@
+{
+  "Poltava": {
+    "url": "https://energy-ua.info/",
+    "additional_info": "Полтавська область",
+    "separator": "/cherga/"
+  },
+  "Chernihiv": {
+    "url": "https://chernigiv.energy-ua.info/",
+    "additional_info": "Чернігівська область",
+    "separator": "/grupa/"
+  },
+  "Lviv": {
+    "url": "https://lviv.energy-ua.info/",
+    "additional_info": "Львівська область",
+    "separator": "/grupa/"
+  },
+  "Zaporizhzhia": {
+    "url": "https://zap.energy-ua.info/",
+    "additional_info": "Запорізька область",
+    "separator": "/cherga/"
+  },
+  "Zakarpattia": {
+    "url": "https://zakarpat.energy-ua.info/",
+    "additional_info": "Закарпатська область",
+    "separator": ""
+  },
+  "Ternopil": {
+    "url": "https://ternopil.energy-ua.info/",
+    "additional_info": "Тернопільська область",
+    "separator": ""
+  },
+  "Khmelnytskyi": {
+    "url": "https://khmel.energy-ua.info/",
+    "additional_info": "Хмельницька область",
+    "separator": ""
+  },
+  "Chernivtsi": {
+    "url": "https://chernivtsi.energy-ua.info/",
+    "additional_info": "Чернівецька область",
+    "separator": ""
+  },
+  "Kyiv": {
+    "url": "https://kyiv.energy-ua.info/",
+    "additional_info": "Київ (місто)",
+    "separator": ""
+  },
+  "Sumy": {
+    "url": "https://sumy.energy-ua.info/",
+    "additional_info": "Сумська область",
+    "separator": ""
+  },
+  "Rivne": {
+    "url": "https://rivne.energy-ua.info/",
+    "additional_info": "Рівненська область",
+    "separator": ""
+  },
+  "Zhytomyr": {
+    "url": "https://zhytomyr.energy-ua.info/",
+    "additional_info": "Житомирська область",
+    "separator": ""
+  },
+  "Dnipro": {
+    "url": "https://dnipro.energy-ua.info/",
+    "additional_info": "Дніпропетровська область",
+    "separator": ""
+  },
+  "Kharkiv": {
+    "url": "https://kharkiv.energy-ua.info/",
+    "additional_info": "Харківська область",
+    "separator": ""
+  }
+}
