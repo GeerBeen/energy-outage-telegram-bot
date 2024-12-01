@@ -18,3 +18,7 @@ class OutageInfoParser(ABC):
         """Повернення даних у вигляді списку елементів перелічень."""
         pass
 
+    @abstractmethod
+    def parse_outage_list(self, region: Region, index: str):
+        """Виклик ланцюжка методів і повернення списку елементів перелічення"""
+        pass
