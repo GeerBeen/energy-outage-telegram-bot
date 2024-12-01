@@ -42,10 +42,14 @@ class EnergySiteParser(OutageInfoParser):
             raise ValueError("Num of hours in energy list != 24")
         return energy_list
 
+    def parse_outage_list(self, region: Region, index: str):
+        raw_data = self.request_html_page_and_get_soup(region, index)
+        scales_list = self.get_div_list(raw_data)
+        energy_data = self.get_outages_list(scales_list)
+        return energy_data
+
 
 if __name__ == "__main__":
     sp = EnergySiteParser()
-    raw_data = sp.request_html_page_and_get_soup(Region.SUMY, '1')
-    scales_list = sp.get_div_list(raw_data)
-    energy_data = sp.get_outages_list(scales_list)
+    energy_data = sp.parse_outage_list(Region.SUMY, '4')
     print(energy_data)
