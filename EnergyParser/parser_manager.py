@@ -7,8 +7,8 @@ class ParserManager:
     def __init__(self, parser: OutageInfoParser):
         self.__parser = parser
 
-    def get_outage_list(self, region: Region, index: str):
-        energy_data = self.__parser.parse_outage_list(region, index)
+    async def get_outage_list(self, region: Region, index: str):
+        energy_data = await self.__parser.parse_outage_list(region, index)
         return energy_data
 
     def change_parser(self, new_parser: OutageInfoParser):

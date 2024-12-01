@@ -5,21 +5,27 @@ import fake_useragent
 from EnergyParser.outage_state import OutageStatus
 from EnergyParser.region import Region
 from EnergyParser.file_reader import load_region_data
+import aiohttp
 
-SUFFIX_URL = '/cherga/'
+SUFFIX_URL = 'cherga/'
 FILE_PATH = 'regions.json'
 
 
 class EnergySiteParser(OutageInfoParser):
-    def request_html_page_and_get_soup(self, region: Region, index: str):
+    async def request_html_page_and_get_soup(self, region: Region, index: str):
         user = fake_useragent.UserAgent().random
-        header = {'user-agent': user}
-
+        headers = {'user-agent': user}
         link = load_region_data(FILE_PATH)[region.value]['url'] + SUFFIX_URL + index
-        response = requests.get(link, headers=header)
-        if response.status_code != 200:
-            raise requests.exceptions.HTTPError(f"Запит завершився з помилкою: {response.status_code}")
-        soup = BeautifulSoup(response.text, 'lxml')
+
+        async with aiohttp.ClientSession() as session:
+            async with session.get(link, headers=headers) as response:
+                if response.status != 200:
+                    raise aiohttp.ClientResponseError(
+                        response.request_info, response.history, status=response.status
+                    )
+                html_text = await response.text()
+
+        soup = BeautifulSoup(html_text, 'lxml')
         return soup
 
     def get_div_list(self, soup):
@@ -42,8 +48,8 @@ class EnergySiteParser(OutageInfoParser):
             raise ValueError("Num of hours in energy list != 24")
         return energy_list
 
-    def parse_outage_list(self, region: Region, index: str):
-        raw_data = self.request_html_page_and_get_soup(region, index)
+    async def parse_outage_list(self, region: Region, index: str):
+        raw_data = await self.request_html_page_and_get_soup(region, index)
         scales_list = self.get_div_list(raw_data)
         energy_data = self.get_outages_list(scales_list)
         return energy_data
